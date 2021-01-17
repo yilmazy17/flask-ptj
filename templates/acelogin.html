@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+	<div class="messagetop">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="message">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="message">{{message}}</h3>
+{% endif %}
+</div>
+<div class="loginbox">
+    <img src="{{ url_for('static', filename='images/icon.png') }}" class="avatar">
+    <h1 class="loginh1">Acente Girişi</h1>
+    <form method="post">
+        <p>Mersis Numarası</p>
+        <input type="text" name="mersis" placeholder="Mersis Numarasını Giriniz" required>
+        <p>Şifre</p>
+        <input type="password" name="password" placeholder="Şifre giriniz" required>
+        <input type="submit" name="" value="Giriş">
+        <a href="{{ url_for('age_regis_page') }}">Kaydınız yoksa buraya tıklayarak kayıt olun...</a>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

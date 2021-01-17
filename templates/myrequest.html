@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="messagetops">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="messages">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="messages">{{message}}</h3>
+    {% endif %}
+</div>
+<table class="contenttab">
+    <thead>
+        <tr>
+            <th>İşi Veren Firma Adı</th>
+            <th> İşin Konumu </th>
+            <th> İşin Tarihi Ve Saati </th>
+            <th> İş İçin Gereken Çalışan Sayısı </th>
+            <th> İş İçin Gerekli Yabancı Dil</th>
+            <th> İşin Ücreti (Günlük)</th>
+            <th> İş Kaç Saat Sürüyor (Günlük) </th>
+            <th> İş Kaç Gün Devam Edecek</th>
+            <th> Durumu</th>
+            {% if g.types == 'Student' %}
+            <th>İşlem</th>
+            {% endif %}
+        </tr>
+    </thead>  
+    <tbody>
+{% for request in myrequests %}
+    {% if request[1] == g.pk %}
+        {% for job in jobs %}
+            {% if job[0] == request[3] %}
+            <tr>
+                {% for agency in agencies %}
+                    {% if agency[0] == job[5] %}
+                    <td>	{{agency[1]}}</td>
+                    {% endif %}
+                {% endfor %}
+                <td>	{{ job[1] }} </td>
+                <td>	{{ job[2]}}</td>
+                <td>	{{ job[3]}}</td>
+                <td>	{{ job[4]}}</td>
+                <td>	{{ job[6]}}</td>
+                <td>	{{ job[7]}}</td>
+                <td>	{{ job[8]}}</td>  
+                <td>{{request[4]}}</td>  
+                {% if job[3] > 0 %}
+                    {% if g.types == 'Student' %}
+                    <td><a href="{{ url_for('delete_req', delreq=request[0]) }}">İsteği sil</a></td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

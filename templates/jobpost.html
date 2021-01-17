@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="stu_reg"><h1>İş İlanı</h1></div>
+<div class="messagetop">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="message">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="message">{{message}}</h3>
+{% endif %}
+</div>
+<div class="main">
+<form action="" method="post" name="regist">
+<div id="name">
+<h2 class="name">İş Konumu</h2>
+<input class="firstname" type="text" name="Job_Loc" required="required">
+</div>
+<h2 class="name">Gereken Çalışan Sayısı</h2>
+<input class="email" type="number" name="StuNum">
+<div class="unis">
+<h2 class="name">İş Tarihi<h2>
+<input class="firstname" type="datetime-local" name="date" required="required">
+</div>
+<h2 class="name">İş için gerekli dil</h2>
+<input class="firstname" type="text" name="lang">
+<h2 class="name">İşin Ücreti (Günlük)</h2>
+<input class="firstname" type="text" name="wage">
+<h2 class="name">İş kaç saat sürecek (Günlük)</h2>
+<input class="firstname" type="text" name="work_time">
+<h2 class="name">İş kaç gün devam edecek</h2>
+<input class="firstname" type="text" name="work_days">
+<br>
+<button type="submit">Gönder</button>
+</form>
+</div>
+
+
+
+{% endblock %}

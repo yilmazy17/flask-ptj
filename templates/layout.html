@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title> {% block title %}{% endblock %} </title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='stylesheets/index3.css') }}" type='text/css'/>
+    
+    </head>
+    <body>
+    
+    <nav class="temel">
+        <div class="drpdwn">
+            <input type="image" id="home" src="{{ url_for('static', filename='images/page.png') }}" width="100px">
+            <div class="drop-cont" style="left:0;">
+                <a href="{{ url_for('home_page') }}">Anasayfa</a>
+				{% if g.is_active == 'active'%}
+					{% if g.types == 'Student' and g.is_admin != 'admin' %}
+					<a href="{{ url_for('jobs_page') }}">İş İlanları</a>
+					<a href="{{ url_for('my_request_page') }}">İş isteklerim</a>
+					{% endif %}
+					{% if g.types == 'Agency' and g.is_admin != 'admin' %}
+					<a href="{{ url_for('students_page') }}">Öğrenciler</a>
+					<a href="{{ url_for('my_jobs_page') }}">İş İlanlarım</a>
+					{% endif %}
+					{% if g.is_admin == 'admin' %} 
+					<a href="{{ url_for('jobs_page') }}">İş İlanları</a>
+                    <a href="{{ url_for('students_page') }}">Öğrenciler</a>
+                    <a href="{{ url_for('agency_page') }}">Acenteler</a>
+					{% endif %}
+				{% endif %}
+            </div>
+        </div>
+        <div class="gk">
+            <div class="drpdwn">
+			{% if g.is_active == 'active'%}
+			<button class="button1">{{g.user}}</button>
+            <div class="drop-cont">
+			<a href="{{ url_for('logout') }}">Çıkış Yap</a>
+            </div>
+			{% endif %}
+			{% if g.is_active == 'nonactive' %}
+			<button class="button1">Giriş</button>
+            <div class="drop-cont">
+                <a href="{{ url_for('stu_login_page') }}">Öğrenci Giriş</a>
+                <a href="{{ url_for('age_login_page') }}">Acente Giriş</a>
+            </div>
+			{% endif %}
+            </div>
+            <div class="drpdwn">
+			{% if g.is_active == 'nonactive' %}
+			<button class="button1">Kaydol</button>
+			<div class="drop-cont">
+                <a href="{{ url_for('regis_page') }}">Öğrenci Kayıt</a>
+                <a href="{{ url_for('age_regis_page') }}">Acente Kayıt</a>
+            </div>
+			{% endif %}
+			</div>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+
+           
+
+        
+       
+        
+    
+        
+    </body>
+
+
+
+</html>

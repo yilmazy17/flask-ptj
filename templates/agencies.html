@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<table class="contenttab">
+<thead>
+    <tr>
+        <th> Acente Adı </th>
+        <th> Mersis Numarası </th>
+        <th> Office Konumu</th>
+        {% if g.is_admin == 'admin' %}
+        <th>İşlem</th>
+        {% endif %}
+    </tr>
+</thead>   
+<tbody>
+{% for agency in agencies %}
+    <tr>
+        <td>{{ agency[1] }}</td>
+        <td>{{ agency[0] }}</td>
+        <td>{{ agency[2] }}</td>
+        {% if g.is_admin == 'admin' %}
+        <td><a href="{{ url_for('.delete_age', mersis=agency[0]) }}">Acentayı Sil</a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+{% endblock %}

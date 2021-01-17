@@ -1,0 +1,529 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+body{
+    background-image: url("/static/images/back3.png");
+}
+
+#home{
+    
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 15px;
+    
+}
+.gk{
+    position: absolute;
+  display: inline-block;
+  right: 0%;
+}
+
+.main{
+    background-color:rgb(0,0,0,0.3);
+    width: 800px;
+    margin: auto;
+}
+
+.email{
+    position: relative;
+    left: 200px;
+    top: -37px;
+    line-height: 40px;
+    width: 480px;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size: 18px;
+    color: #555;
+}
+
+.unis{
+    width: 100%;
+    height: 100px;
+}
+
+.option{
+    position: relative;
+    left: 200px;
+    top: -37px;
+    line-height: 40px;
+    width: 480px;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size: 18px;
+    color: #555;
+
+}
+
+.stu_reg{
+    width: 800px;
+    background-color: rgb(0,0,0,0.6);
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.drop-cont{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    border: 2px solid black;
+    background-image: url("/static/images/back.jpg");
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: 250ms all;
+    visibility: hidden;
+}
+.drpdwn{
+    position: relative;
+  display: inline-block;
+
+}
+.firstlabel{
+    position: relative;
+    color: white;
+    text-transform: capitalize;
+    font-size: 18px;
+    left: 203px;
+    top:-45px;
+}
+#age{
+    position: relative;
+    left: 200px;
+    top: -32px;
+    line-height: 28px;
+    width: 200px;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size: 18px;
+    color: #555;
+
+}
+
+.firstlabel1{
+    position: relative;
+    color: white;
+    text-transform: capitalize;
+    font-size: 18px;
+    left: 203px;
+    top:-36px;
+    display: block;
+}
+
+.lastlabel{
+    position: relative;
+    color: white;
+    text-transform: capitalize;
+    font-size: 18px;
+    left: 195px;
+    top:-45px;
+}
+
+.lastname{
+    position: relative;
+    left: 417px;
+    top:-80px;
+    line-height: 40px;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size: 16px;
+    color: #555;
+}
+
+.messagetop{
+    background-color:rgb(0,0,0,0.3);
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.message{
+    position: relative;
+    display: inline;
+    width: 800px;
+    top: 20px;
+    margin-left: 33%;
+    margin-right: auto;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.messagetops{
+    background-color: rgb(0,0,0,0.6);
+
+    border: solid 3px black;
+    border-radius: 8px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.messages{
+    position: relative;
+    display: block;
+    width: 800px;
+    margin-left: 41%;
+    margin-right: auto;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.contenttab th{
+    padding: 12px 15px;
+
+}
+.contenttab td{
+
+    padding: 15px 12px;
+
+}
+
+.firstname{
+    position: relative;
+    left: 200px;
+    top: -37px;
+    line-height: 40px;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size:16px;
+}
+
+.contenttab thead{
+    border-radius: 5px;
+}
+
+
+
+.contenttab thead tr{
+    text-align: left;
+    background-color:rgb(0,0,0,0.5) ;
+    color: white;
+}
+
+.contenttab tbody tr{
+    border-bottom: 2px solid lightcyan;
+}
+
+
+.contenttab tbody tr:nth-of-type(even){
+    background-color:rgb(0,0,0,0.1);
+}
+
+.contenttab{
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 5px 5px 0px 0px;
+    font-weight: 500;
+    font-size: 20px;
+
+}
+
+.name{
+    margin-left: 25px;
+    margin-top: 30px;
+    width: 125px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-size: 20px;
+
+}
+.namex{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 125px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-size: 20px;
+
+}
+form{
+    padding: 10px;
+}
+#name{
+    width: 100%;
+    height: 100px;
+}
+
+.main input[type="radio"]
+{
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.labelrat{
+    margin-left: 20px;
+    font-style:inherit;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+}
+
+.labelrat1{
+    margin-left: 20px;
+    font-style:inherit;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    margin-left: 60px;
+}
+
+.main button[type="submit"]{
+    margin-left: 40%;
+    margin-right: 50%;
+    margin-top: 2px;
+    width: 125px;
+    color: black;
+    font-size: 18px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 8px;
+    
+}
+
+
+.langs{
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px 0px 0px 0px;
+}
+
+.dropdown:hover #home {background-color: #3e8e41;}
+
+.drpdwn:hover .drop-cont{
+    opacity: 1;
+    visibility: visible;
+}
+
+.temel{
+    border-radius: 0px 0px 15px 15px ;
+    position: relative;
+    background-image: url("/static/images/back.jpg");
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
+
+.drop-cont a{
+    color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.headq{
+    position: relative;
+    display: inline;
+    bottom: 40px;
+    left: 35%;
+    right: 50%;
+    font-size: 30px;
+
+}
+
+.button1{
+    position: relative;
+    margin: 30px 60px;
+    font-size: 25px;
+    border: solid 0px black;
+    height: 40px;
+    background: transparent;
+    color: #000;
+
+}
+
+
+.drop-cont a:hover{
+    background-color: #f1f1f1;  
+}
+
+#home:hover {
+    background-image: url("/static/images/back.jpg");
+}
+
+input{
+	border: 2px solid black;
+}
+select{
+	border: 2px solid black;
+}
+
+.loginbox{
+    width: 350px;
+    height: 470px;
+    border: 3px solid black;
+    color: #fff;
+    top: 60%;
+    left: 50%;
+    position: relative;
+    border-radius: 7px;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    background-image: url("/static/images/back.jpg");
+}
+
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+	
+	
+}
+
+.loginh1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+    color: black;
+
+
+}
+
+.adjobs button{
+    position: relative;
+    top: 3px;
+    left: 40%;
+    font-size: 30px;
+    border: 1px solid black;
+    background: none;
+    font-family: "montserrat";
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    color:black;
+    transition: 0.8s;
+    overflow: hidden;
+}
+.adjobs button:hover{
+    color:white; 
+    
+}
+.adjobs button::before{
+    content: "";
+    position: absolute;
+    background: rgb(0,0,0,0.6);
+    left:0;
+    width: 100%;
+    height: 0%;
+    z-index: -1;
+    transition: 0.8s;
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+
+}
+.adjobs button:hover::before{
+    height: 180%;
+}
+
+
+
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #000;
+
+}
+
+.lastlabel{
+    font-size: 15px;
+    font-style: normal;
+
+}
+
+
+
+.main input[type="password"]
+{
+    position: relative;
+    left: 200px;
+    top: -32px;
+    line-height: 28px;
+    width: 200px;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size: 18px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.loginbox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+
+}
+
+.loginbox input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background:pink;
+    color: #000;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.loginbox input[type="submit"]:hover
+{
+    cursor: pointer;
+    background:lightcoral;
+    color: #000;
+
+}
+
+.loginbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: black;
+}
+
+.loginbox a:hover
+{
+    color: lightcoral;
+}

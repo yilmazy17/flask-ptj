@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="messagetops">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="messages">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="messages">{{message}}</h3>
+    {% endif %}
+</div>
+<table class="contenttab">
+    <thead>
+        <tr>
+            <th> Mail Adresi </th>
+            <th> İsim Soyisim </th>
+            <th> Üniversite </th>
+            <th> Yaş</th>
+            <th> Yabancı Diller</th>
+            {% if g.types == 'Agency'%}
+                <th>İşlem</th>
+            {% endif %}
+            <th>Onay Durumu</th>
+        </tr>
+    </thead> 
+    <tbody> 
+{% for request in myrequests %}
+    <tr>
+    {% if request[2] == g.pk and request[3] == reqjob %}
+    
+    {% for student in students %}
+        {% if student[0] == request[1] %}
+            <td>	{{ student[0] }} </td>
+            <td>	{{ student[1]}}</td>
+            <td>	{{ student[3]}}</td>
+            <td>	{{student[4]}}</td>
+            <td>{% for language in languages %}{% if language[1] == student[0] %}{{language[2]}} {% endif %}{% endfor %}</td>
+            <td>
+                {% if request[4] != 'Onaylandı' %}
+                <a href="{{ url_for('aprove_req', apreq=request[0]) }}"> Onayla</a>
+                <br>
+                {% endif %}
+                {% if request[4] != 'Reddedildi' %}
+                <a href="{{ url_for('deny_req', apreq=request[0]) }}"> Reddet</a>
+                {% endif %}
+            </td>
+        {% endif %}
+
+    {% endfor %}
+    <td>{{request[4]}}</td>
+    
+    {% endif %}
+    </tr>    
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

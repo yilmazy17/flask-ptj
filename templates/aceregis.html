@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="stu_reg"><h1> Acente Kayıt </h1></div>
+	<div class="messagetop">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="message">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="message">{{message}}</h3>
+{% endif %}
+</div>
+<div class="main">
+	<form action="" method="post" name="regist">
+	<div id="name">
+	<h2 class="name">Şirket Adı</h2>
+	<input class="email" type="text" name="comp_name" required="required">
+	</div>
+	<h2 class="name">Mersis Numarası</h2>
+	<input class="email" type="number" name="mersis">
+	<div class="unis">
+	<h2 class="name">Office Konumu<h2>
+	<input class="email" type="text" name="office" required="required">
+	</div>
+	<h2 class="name">Şifre</h2>
+	<input class="email" type="password" name="Password">
+	<br>
+	<button type="submit">Gönder</button>
+	</form>
+</div>
+
+{% endblock %}

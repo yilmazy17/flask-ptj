@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="messagetops">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="messages">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="messages">{{message}}</h3>
+    {% endif %}
+</div>
+<div class="adjobs">
+	<button onclick="window.location.href='{{ url_for('job_post_page') }}';">İlan Ver</button>
+	
+	
+	</div>
+<table class="contenttab">
+	<thead>
+        <tr>
+            <th>İşi Veren Firma Adı</th>
+            <th> İşin Konumu </th>
+            <th> İşin Tarihi Ve Saati </th>
+            <th> İş İçin Gereken Çalışan Sayısı </th>
+            <th> İş İçin Gerekli Yabancı Dil</th>
+            <th> İşin Ücreti (Günlük)</th>
+            <th> İş Kaç Saat Sürüyor (Günlük) </th>
+            <th> İş Kaç Gün Devam Edecek</th>
+            {% if g.types == 'Agency' %}
+			<th>İşlem</th>
+			<th>İşlem</th>
+            {% endif %}
+        </tr>
+	</thead> 
+	<tbody>
+		{% for job in myjobs %}
+		<tr>
+			{% if job[5] == g.pk %}
+				<td>{{g.user}}</td>
+				<td>	{{ job[1] }} </td>
+				<td>	{{ job[2]}}</td>
+				<td>	{{ job[3]}}</td>
+				<td>	{{ job[4]}}</td>
+				<td>	{{ job[6]}}</td>
+				<td>	{{ job[7]}}</td>
+				<td>	{{ job[8]}}</td>
+				{% if g.types == 'Agency' %}
+				<td><a href="{{ url_for('.delete_job', deljob=job[0]) }}"> İşi Sil</a></td>
+				<td><a href="{{ url_for('my_jobs_rq_page', reqjob=job[0]) }}">İş İçin Gelen İsteklere Bak</a></td>
+				{% endif %}
+			{% endif %}
+		</tr>
+	{% endfor %}
+	</tbody> 
+</table>
+
+
+{% endblock %}

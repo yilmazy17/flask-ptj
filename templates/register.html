@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="stu_reg"><h1> Öğrenci Kayıt </h1></div>
+	<div class="messagetop">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="message">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="message">{{message}}</h3>
+{% endif %}
+</div>
+<div class="main">
+	
+	<form action="" method="post" name="regist">
+	<div id="name">
+	<h2 class="name">İsim Soyisim</h2>
+	<input class="firstname" type="text" name="first_name" required="required"><br>
+	<label class="firstlabel">İsim</label>
+	<input class="lastname" type="text" name="last_name" required="required">
+	<label class="lastlabel">Soyisim</label>
+	</div>
+	<h2 class="name">Mail Adresi</h2>
+	<input class="email" type="mail" name="email">
+	<div class="unis">
+	<h2 class="name">Eğitim<h2>
+	<label class="firstlabel1">Üniversite</label>	
+	<select class="option" name="school"  required>
+	<option disabled="disabled" selected="selected" value="">--Birini Seçiniz</option>
+	<option>İstanbul Üniversitesi</option>
+	<option>İstanbul Teknik Üniversitesi</option>
+	<option>Boğaziçi Üniversitesi</option>
+	<option>Mimar Sinan Güzel Sanatlar Üniversitesi</option>
+	<option>Marmara Üniversitesi</option>
+	<option>Yıldız Teknik Üniversitesi</option>
+	<option>Galatasaray Üniversitesi</option>
+	<option>Türk-Alman Üniversitesi</option>
+	<option>Medeniyet Üniversitesi</option>
+	<option>Sağlık Bilimleri Üniversitesi</option>
+	<option>Deniz Harp Okulu</option>
+	<option>Hava Harp Okulu</option>
+	<option>Acıbadem Üniversitesi</option>
+	<option>Bahçeşehir Üniversitesi</option>
+	<option>Beykent Üniversitesi</option>
+	<option>Beykoz Üniversitesi</option>
+	<option>Bezmialem Vakıf Üniversitesi</option>
+	<option>Biruni Üniversitesi</option>
+	<option>Doğuş Üniversitesi</option>
+	<option>Fatih Üniversitesi</option>
+	<option>Fatih Sultan Mehmet Vakıf Üniversitesi</option>
+	<option>Gedik Üniversitesi</option>
+	<option>Haliç Üniversitesi</option>
+	<option>Işık Üniversitesi</option>
+	<option>İstanbul 29 Mayıs Üniversitesi</option>
+	<option>İstanbul Arel Üniversitesi</option>
+	<option>İstanbul Aydın Üniversitesi</option>
+	<option>İstanbul Bilgi Üniversitesi</option>
+	<option>İstanbul Bilim Üniversitesi</option>
+	<option>İstanbul Gelişim Üniversitesi</option>
+	<option>İstanbul Esenyurt Üniversitesi</option>
+	<option>İstanbul Kemerburgaz Üniversitesi</option>
+	<option>İstanbul Kültür Üniversitesi</option>
+	<option>İstanbul Medipol Üniversitesi</option>
+	<option>İstanbul Rumeli Üniversitesi</option>
+	<option>İstanbul Sabahattin Zaim Üniversitesi</option>
+	<option>İstanbul Şehir Üniversitesi</option>
+	<option>İstanbul Ticaret Üniversitesi</option>
+	<option>Kadir Has Üniversitesi</option>
+	<option>Koç Üniversitesi</option>
+	<option>Maltepe Üniversitesi</option>
+	<option>Nişantaşı Üniversitesi</option>
+	<option>MEF Üniversitesi</option>
+	<option>Murat Hüdavendigar Üniversitesi</option>
+	<option>Okan Üniversitesi</option>
+	<option>Özyeğin Üniversitesi</option>
+	<option>Piri Reis Üniversitesi</option>
+	<option>Sabancı Üniversitesi</option>
+	<option>Süleyman Şah Üniversitesi</option>
+	<option>Üsküdar Üniversitesi</option>
+	<option>Yeditepe Üniversitesi</option>
+	<option>Yeni Yüzyıl Üniversitesi</option>
+	<option>Avrupa Meslek Yüksekokulu</option>
+	<option>Beykoz Üniversitesi</option>
+	<option>İstanbul Kavram Meslek Yüksekokulu</option>
+	<option>Plato Meslek Yüksek Okulu</option>
+	<option>İstanbul Şişli Meslek Yüksekokulu</option>
+	<option>Ataşehir Adıgüzel Meslek Yüksekokulu</option>
+	</select>
+	<label class="firstlabel1">Yaş</label>
+	<input type="number" id="age" name="age"><label for="age">
+	</div>
+	<h2 class="name">Şifre</h2>
+	<input type="password" name="Password">
+	<h2 class="namex">Ekstra Dil</h2>
+	<div class="langs">
+	<label class="labelrat">İngilizce -></label>
+	<input type="radio" name="en" value="İngilizce">Var</input>
+	<input type="radio" name="en" value="Yok" checked>Yok</input>
+	<label class="labelrat">Almanca -></label>
+	<input type="radio" name="al" value="Almanca">Var</input>
+	<input type="radio" name="al" value="Yok" checked>Yok</input>
+	<label class="labelrat">Rusca -></label>
+	<input type="radio" name="ru" value="Rusca">Var</input>
+	<input type="radio" name="ru" value="Yok" checked>Yok</input>
+	<label class="labelrat">Çince -></label>
+	<input type="radio" name="ch" value="Çince">Var</input>
+	<input type="radio" name="ch" value="Yok" checked>Yok</input>
+	<br>
+	<label class="labelrat1">İspanyolca -></label>
+	<input type="radio" name="es" value="İspanyolca">Var</input>
+	<input type="radio" name="es" value="Yok" checked>Yok</input>
+	<label class="labelrat1">Arapça -></label>
+	<input type="radio" name="ar" value="Arapça">Var</input>
+	<input type="radio" name="ar" value="Yok" checked>Yok</input>
+	<label class="labelrat1">Japonca -></label>
+	<input type="radio" name="ja" value="Japonca">Var</input>
+	<input type="radio" name="ja" value="Yok" checked>Yok</input>
+	</div>
+	<br>
+	<button type="submit">Gönder</button>
+	</form>
+</div>
+
+{% endblock %}

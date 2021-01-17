@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="messagetops">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}	
+		{% for message in messages %}
+		<h3 class="messages">{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	{% if message %}
+	<h3 class="messages">{{message}}</h3>
+    {% endif %}
+</div>
+<div class="loginbox">
+    <img src="{{ url_for('static', filename='images/icon.png') }}" class="avatar">
+    <form action="{{ url_for('reset_code_page') }}" method="post">
+        <p>Mail Adresi</p>
+        <input type="text" name="form_mail" placeholder="Mail Adresinizi Giriniz" required>
+        <input type="submit" name="" value="Giriş">
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}
