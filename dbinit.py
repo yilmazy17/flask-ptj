@@ -34,7 +34,7 @@ INIT_STATEMENTS = [
         PRIMARY KEY("job_ıd"),
         FOREIGN KEY("mersis_no") REFERENCES AGENCY("mersis_no")
         );""",
-    """CREATE TABLE IF NOT EXISTS PUBLIC.JOB_REQUEST 8
+    """CREATE TABLE IF NOT EXISTS PUBLIC.JOB_REQUEST (
         "request_ıd" serial NOT NULL,
         "Student_Mail" varchar(200) NOT NULL,
         "mersis_no" varchar(200) NOT NULL,
