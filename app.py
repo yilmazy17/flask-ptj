@@ -112,7 +112,7 @@ def code_page():
             cur.execute("""insert into STUDENT ("Student_Mail","Name_Surname","Password","University","Age")values(%s,%s,%s,%s,%s)""",(form_mail,form_namesurn,form_password,form_school,form_age))
             con.commit()
             for lang in langlist:
-                cur.execute("""insert into LAN_TABLE ("Student_Mail","Extra_Language")values(%s,%s)""",(form_mail,lang))
+                cur.execute("""insert into LAN_TABLE ("Student_Mail","Ekstra_Language")values(%s,%s)""",(form_mail,lang))
                 con.commit()
             msg = Message('PTJ Ailesine Hoşgeldin', recipients=[form_mail])
             msg.body = 'Merhaba, PTJ Ailesi olarak seni aramızda görmekten Mutluluk Duyuyoruz, Umarım websitemizdeki deneyimden Memnun kalırsın.'
