@@ -47,7 +47,7 @@ def age_regis_page():
         form_mersis = request.form['mersis']
         if len(form_mersis) != 16:
             return render_template("aceregis.html", message="Mersis Numarası 16 karakterden oluşmaktadır")
-        cur.execute("""select * from "agency" """)
+        cur.execute("""select * from AGENCY """)
         agencies = cur.fetchall()
         for agency in agencies:
             if form_mersis == agency[0]:
@@ -56,7 +56,7 @@ def age_regis_page():
         form_password = hasher.hash(request.form['Password'])
         if len(form_password) < 8:
             return render_template("aceregis.html", message="Şifre 8 karakterden büyük olmalıdır")
-        cur.execute("""insert into "agency" ("mersis_no","name","office_location","password")values(%s,%s,%s,%s)""",(form_mersis,form_compname,form_office,form_password))
+        cur.execute("""insert into AGENCY ("mersis_no","name","office_location","password")values(%s,%s,%s,%s)""",(form_mersis,form_compname,form_office,form_password))
         con.commit()
         flash('Kayıt Başarılı')
         return redirect(url_for("age_regis_page"))
@@ -87,7 +87,7 @@ def job_post_page():
         form_wage = request.form['wage']
         form_work_time = request.form['work_time']
         form_work_days = request.form['work_days']
-        cur.execute("""insert into "job" ("job_location","work_date","number_of_students","nececity_language","mersis_no","wage","work_time","work_days")values(%s,%s,%s,%s,%s,%s,%s,%s)""",(form_jobloc,form_JobDate2,form_stunum,form_lang,g.pk,form_wage,form_work_time,form_work_days))
+        cur.execute("""insert into JOB ("job_location","work_date","number_of_students","nececity_language","mersis_no","wage","work_time","work_days")values(%s,%s,%s,%s,%s,%s,%s,%s)""",(form_jobloc,form_JobDate2,form_stunum,form_lang,g.pk,form_wage,form_work_time,form_work_days))
         con.commit()
         flash('İş Paylaşıldı')
         return redirect(url_for("job_post_page"))
@@ -109,10 +109,10 @@ def code_page():
         if code != stringcode:
             return render_template("register.html", message="Onay Kodunu Yanlış Girdiniz Lütfen Tekrar Deneyiniz")
         else:
-            cur.execute("""insert into "Student" ("Student_Mail","Name_Surname","Password","University","Age")values(%s,%s,%s,%s,%s)""",(form_mail,form_namesurn,form_password,form_school,form_age))
+            cur.execute("""insert into STUDENT ("Student_Mail","Name_Surname","Password","University","Age")values(%s,%s,%s,%s,%s)""",(form_mail,form_namesurn,form_password,form_school,form_age))
             con.commit()
             for lang in langlist:
-                cur.execute("""insert into "Lan_Table" ("Student_Mail","Extra_Language")values(%s,%s)""",(form_mail,lang))
+                cur.execute("""insert into LAN_TABLE ("Student_Mail","Extra_Language")values(%s,%s)""",(form_mail,lang))
                 con.commit()
             msg = Message('PTJ Ailesine Hoşgeldin', recipients=[form_mail])
             msg.body = 'Merhaba, PTJ Ailesi olarak seni aramızda görmekten Mutluluk Duyuyoruz, Umarım websitemizdeki deneyimden Memnun kalırsın.'
@@ -128,7 +128,7 @@ def regis_page():
         cur = con.cursor()
         form_namesurn = request.form["first_name"] + " " + request.form["last_name"]
         form_mail = request.form["email"]
-        cur.execute("""select * from "Student" """)
+        cur.execute("""select * from STUDENT """)
         students = cur.fetchall()
         for student in students:
             if form_mail == student[0]:
@@ -177,7 +177,7 @@ def reset_code_page():
     else:
         form_mail = request.form['form_mail']
         cur = con.cursor()
-        cur.execute("""select * from "Student" """)
+        cur.execute("""select * from STUDENT """)
         students = cur.fetchall()
         x = 0
         for student in students:
@@ -229,7 +229,7 @@ def reset_pass1_page():
             else:
                 cur = con.cursor()
                 hashed = hasher.hash(pass1)
-                cur.execute("""update "Student" set "Password"=%s where "Student_Mail"=%s""",(hashed,form_mail))
+                cur.execute("""update STUDENT set "Password"=%s where "Student_Mail"=%s""",(hashed,form_mail))
                 con.commit()
                 flash('Şifre Değiştirildi')
                 return redirect(url_for("stu_login_page"))
@@ -265,7 +265,7 @@ def before_request():
 
 def agency_page():
     cur = con.cursor()
-    cur.execute("""select * from "agency" """)
+    cur.execute("""select * from AGENCY """)
     agencies = cur.fetchall()
     return render_template("agencies.html", agencies=agencies)
 
@@ -279,7 +279,7 @@ def age_login_page():
         form_mersis = request.form['mersis']
         form_password = request.form['password']
         cur = con.cursor()
-        cur.execute("""select * from "agency" """)
+        cur.execute("""select * from AGENCY """)
         agencies = cur.fetchall()
         for agency in agencies:
             if agency[0] == form_mersis and hasher.verify(form_password, agency[3]):
@@ -304,7 +304,7 @@ def stu_login_page():
         form_mail = request.form["mail"]
         form_password = request.form["password"]
         cur = con.cursor()
-        cur.execute("""select * from "Student" """)
+        cur.execute("""select * from STUDENT """)
         students = cur.fetchall()
         for student in students:
             if student[0] == form_mail and hasher.verify(form_password, student[2]):
@@ -329,7 +329,7 @@ def request_job():
     reqjob_ıd = request.args.get('reqjob_ıd')
     reqjob_mer = request.args.get('reqjob_mer')
     cur = con.cursor()
-    cur.execute("""insert into "job_request" ("Student_Mail","mersis_no","job_ıd","checks")values(%s,%s,%s,%s)""",(g.pk,reqjob_mer,reqjob_ıd,'Onay Bekliyor'))
+    cur.execute("""insert into JOB_REQUEST ("Student_Mail","mersis_no","job_ıd","checks")values(%s,%s,%s,%s)""",(g.pk,reqjob_mer,reqjob_ıd,'Onay Bekliyor'))
     con.commit()
     flash('İstek Gönderildi')
     return redirect(url_for("jobs_page"))
@@ -338,27 +338,27 @@ def my_jobs_rq_page():
     reqjob1 = request.args.get('reqjob')
     reqjob = int(reqjob1)
     cur = con.cursor()
-    cur.execute("""select * from "job_request" """)
+    cur.execute("""select * from JOB_REQUEST """)
     myrequests = cur.fetchall()
-    cur.execute("""select * from "Student" """)
+    cur.execute("""select * from STUDENT """)
     students = cur.fetchall()
-    cur.execute("""select * from "Lan_Table" """)
+    cur.execute("""select * from LAN_TABLE """)
     languages = cur.fetchall()
     return render_template("myjobrequest.html", myrequests=myrequests, reqjob=reqjob, students=students, languages=languages)
 
 def aprove_req():
     apreq = request.args.get('apreq')
     cur = con.cursor()
-    cur.execute("""update "job_request" set "checks"='Onaylandı' where "request_ıd"=%s""",[apreq])
+    cur.execute("""update JOB_REQUEST set "checks"='Onaylandı' where "request_ıd"=%s""",[apreq])
     con.commit()
-    cur.execute("""select "job_ıd" from "job_request" where "request_ıd"=%s""",[apreq])
+    cur.execute("""select "job_ıd" from JOB_REQUEST where "request_ıd"=%s""",[apreq])
     reqjob = cur.fetchall()
-    cur.execute("""select "number_of_students" from "job" where "job_ıd"=%s""",[reqjob[0][0]])
+    cur.execute("""select "number_of_students" from JOB where "job_ıd"=%s""",[reqjob[0][0]])
     number1 = cur.fetchall()
     number = number1[0][0]
     number = number-1
     number1 = str(number)
-    cur.execute("""update "job" set "number_of_students"=%s where "job_ıd"=%s""",(number1,reqjob[0][0]))
+    cur.execute("""update JOB set "number_of_students"=%s where "job_ıd"=%s""",(number1,reqjob[0][0]))
     con.commit()
     flash('İstek Onaylandı')
     return redirect(url_for('my_jobs_rq_page',reqjob=reqjob[0][0]))
@@ -366,26 +366,26 @@ def aprove_req():
 def deny_req():
     denreq = request.args.get('apreq')
     cur = con.cursor()
-    cur.execute("""select "checks" from "job_request" where "request_ıd"=%s""",[denreq])
+    cur.execute("""select "checks" from JOB_REQUEST where "request_ıd"=%s""",[denreq])
     checks = cur.fetchall()
     if checks[0][0] == 'Onay Bekliyor':
-        cur.execute("""update "job_request" set "checks"='Reddedildi' where "request_ıd"=%s""",[denreq])
+        cur.execute("""update JOB_REQUEST set "checks"='Reddedildi' where "request_ıd"=%s""",[denreq])
         con.commit()
-        cur.execute("""select "job_ıd" from "job_request" where "request_ıd"=%s""",[denreq])
+        cur.execute("""select "job_ıd" from JOB_REQUEST where "request_ıd"=%s""",[denreq])
         reqjob = cur.fetchall()
         flash('İstek Reddedildi')
         return redirect(url_for('my_jobs_rq_page',reqjob=reqjob[0][0]))
     elif checks[0][0] == 'Onaylandı':
-        cur.execute("""update "job_request" set "checks"='Reddedildi' where "request_ıd"=%s""",[denreq])
+        cur.execute("""update JOB_REQUEST set "checks"='Reddedildi' where "request_ıd"=%s""",[denreq])
         con.commit()
-        cur.execute("""select "job_ıd" from "job_request" where "request_ıd"=%s""",[denreq])
+        cur.execute("""select "job_ıd" from JOB_REQUEST where "request_ıd"=%s""",[denreq])
         reqjob = cur.fetchall()
-        cur.execute("""select "number_of_students" from "job" where "job_ıd"=%s""",[reqjob[0][0]])
+        cur.execute("""select "number_of_students" from JOB where "job_ıd"=%s""",[reqjob[0][0]])
         number1 = cur.fetchall()
         number = number1[0][0]
         number = number+1
         number1 = str(number)
-        cur.execute("""update "job" set "number_of_students"=%s where "job_ıd"=%s""",(number1,reqjob[0][0]))
+        cur.execute("""update JOB set "number_of_students"=%s where "job_ıd"=%s""",(number1,reqjob[0][0]))
         con.commit()
         flash('İstek Reddedildi')
         return redirect(url_for('my_jobs_rq_page',reqjob=reqjob[0][0]))
@@ -393,11 +393,11 @@ def deny_req():
 
 def my_request_page():
     cur = con.cursor()
-    cur.execute("""select * from "job_request" """)
+    cur.execute("""select * from JOB_REQUEST """)
     myrequests = cur.fetchall()
-    cur.execute("""select * from "job" """)
+    cur.execute("""select * from JOB """)
     jobs = cur.fetchall()
-    cur.execute("""select * from "agency" """)
+    cur.execute("""select * from AGENCY """)
     agencies = cur.fetchall()
     return render_template("myrequest.html", myrequests=myrequests, jobs=jobs, agencies=agencies)
 
@@ -405,31 +405,31 @@ def my_request_page():
 
 def my_jobs_page():
     cur = con.cursor()
-    cur.execute("""select * from "job" """)
+    cur.execute("""select * from JOB """)
     myjobs = cur.fetchall()
     return render_template("myjobs.html", myjobs=myjobs)
 
 def delete_req():
     delreq = request.args.get('delreq')
     cur = con.cursor()
-    cur.execute("""select "checks" from "job_request" where request_ıd=%s """,[delreq])
+    cur.execute("""select "checks" from JOB_REQUEST where request_ıd=%s """,[delreq])
     checks = cur.fetchall()
-    cur.execute("""select "job_ıd" from "job_request" where "request_ıd"=%s """,[delreq])
+    cur.execute("""select "job_ıd" from JOB_REQUEST where "request_ıd"=%s """,[delreq])
     job_ıd = cur.fetchall()
     if checks[0][0] == 'Onaylandı':
-        cur.execute("""delete from "job_request" where "request_ıd"=%s """,[delreq])
+        cur.execute("""delete from JOB_REQUEST where "request_ıd"=%s """,[delreq])
         con.commit()
-        cur.execute("""select "number_of_students" from "job" where "job_ıd"=%s""",[job_ıd[0][0]])
+        cur.execute("""select "number_of_students" from JOB where "job_ıd"=%s""",[job_ıd[0][0]])
         number1 = cur.fetchall()
         number = number1[0][0]
         number = number+1
         number1 = str(number)
-        cur.execute("""update "job" set "number_of_students"=%s where "job_ıd"=%s""",(number1,job_ıd[0][0]))
+        cur.execute("""update JOB set "number_of_students"=%s where "job_ıd"=%s""",(number1,job_ıd[0][0]))
         con.commit()
         flash('İstek Silindi')
         return redirect(url_for('my_request_page'))
     else:
-        cur.execute("""delete from "job_request" where "request_ıd"=%s """,[delreq])
+        cur.execute("""delete from JOB_REQUEST where "request_ıd"=%s """,[delreq])
         con.commit()
         flash('İstek silindi')
         return redirect(url_for('my_request_page'))
@@ -439,51 +439,51 @@ def delete_req():
 def delete_job():
     deljob = request.args.get('deljob')
     cur = con.cursor()
-    cur.execute("""delete from "job_request" where "job_ıd"=%s""",[deljob])
+    cur.execute("""delete from JOB_REQUEST where "job_ıd"=%s""",[deljob])
     con.commit()
-    cur.execute("""delete from "job" where "job_ıd"=%s """,[deljob])
+    cur.execute("""delete from JOB where "job_ıd"=%s """,[deljob])
     con.commit()
     flash('İş Başarıyla silindi')
     return redirect(url_for("my_jobs_page"))
 
 def jobs_page():
     cur = con.cursor()
-    cur.execute("""select * from "job" """)
+    cur.execute("""select * from JOB """)
     jobs = cur.fetchall()
     cur = con.cursor()
-    cur.execute("""select * from "agency" """)
+    cur.execute("""select * from AGENCY """)
     agencies = cur.fetchall()
-    cur.execute("""select * from "job_request" """)
+    cur.execute("""select * from JOB_REQUEST """)
     requests = cur.fetchall()
     return render_template("jobs.html", jobs = jobs, agencies=agencies, requests=requests)
 
 def delete_stu():
     stumail = request.args.get('stumail')
     cur = con.cursor()
-    cur.execute("""delete from "Lan_Table" where "Student_Mail"=%s """,[stumail])
+    cur.execute("""delete from LAN_TABLE where "Student_Mail"=%s """,[stumail])
     con.commit()
-    cur.execute("""delete from "job_request" where "Student_Mail"=%s""",[stumail])
+    cur.execute("""delete from JOB_REQUEST where "Student_Mail"=%s""",[stumail])
     con.commit()
-    cur.execute("""delete from "Student" where "Student_Mail"=%s """,[stumail])
+    cur.execute("""delete from STUDENT where "Student_Mail"=%s """,[stumail])
     con.commit()
     return redirect(url_for("students_page"))
 
 def delete_age():
     mersis = request.args.get('mersis')
     cur = con.cursor()
-    cur.execute("""delete from "job_request" where "mersis_no"=%s""",[mersis])
+    cur.execute("""delete from JOB_REQUEST where "mersis_no"=%s""",[mersis])
     con.commit()
-    cur.execute("""delete from "job" where "mersis_no"=%s""",[mersis])
+    cur.execute("""delete from JOB where "mersis_no"=%s""",[mersis])
     con.commit()
-    cur.execute("""delete from "agency" where "mersis_no"=%s""",[mersis])
+    cur.execute("""delete from AGENCY where "mersis_no"=%s""",[mersis])
     con.commit()
     return redirect(url_for("agency_page"))
 
 def students_page():
     cur = con.cursor()
-    cur.execute("""select * from "Student" """)
+    cur.execute("""select * from STUDENT """)
     students = cur.fetchall()
-    cur.execute("""select * from "Lan_Table" """)
+    cur.execute("""select * from LAN_TABLE """)
     languages = cur.fetchall()
     return render_template("students.html", students = students, languages=languages)
 

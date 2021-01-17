@@ -44,6 +44,13 @@ INIT_STATEMENTS = [
         FOREIGN KEY("Student_Mail") REFERENCES STUDENT("Student_Mail"),
         FOREIGN KEY("mersis_no") REFERENCES AGENCY("mersis_no"),
         FOREIGN KEY("job_ıd") REFERENCES JOB("job_ıd")
+        );""",
+    """CREATE TABLE IF NOT EXISTS PUBLIC.LAN_TABLE (
+        "Lan_Id" serial NOT NULL,
+        "Student_Mail" "Student_Mail" varchar(200) NOT NULL,
+        "Ekstra_Language" varchar(50) NOT NULL,
+        PRIMARY KEY("Lan_Id"),
+        FOREIGN KEY("Student_Mail") REFERENCES STUDENT("Student_Mail")
         );"""
 ]
 
