@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from flask import render_template, current_app, request, redirect, url_for, flash, session, g
 from flask_mail import Mail, Message
-import psycopg2
+import psycopg2 as dbapi2
 import time
 import random
 from passlib.hash import pbkdf2_sha256 as hasher
@@ -16,7 +16,8 @@ check = 0
 
 app = Flask(__name__)
 app.secret_key = 'onlyıknow'
-con = psycopg2.connect(database='Moneme', user='postgres', host='localhost', password='emre1999')
+url = postgres://kvwrgkebshegcf:aa87eb5072319ace108142f5e23255e66768ea1e77e76db8fbd9480de4fcf13a@ec2-34-202-5-87.compute-1.amazonaws.com:5432/d41ek2217p7u99
+con = dbapi2.connect(url)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'info.partjobs@gmail.com'
