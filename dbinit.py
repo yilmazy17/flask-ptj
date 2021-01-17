@@ -5,12 +5,7 @@ import psycopg2 as dbapi2
 
 
 INIT_STATEMENTS = [
-    """GRANT CONNECT ON DATABASE d41ek2217p7u99 TO kvwrgkebshegcf;""",
     """CREATE SCHEMA IF NOT EXISTS PUBLIC;""",
-    """GRANT USAGE ON SCHEMA PUBLIC TO kvwrgkebshegcf;""",
-    """GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA PUBLIC TO kvwrgkebshegcf;""",
-    """GRANT USAGE ON ALL SEQUENCES IN SCHEMA PUBLIC TO kvwrgkebshegcf;""",
-    """GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA PUBLIC TO kvwrgkebshegcf;""",
     """CREATE TABLE IF NOT EXISTS PUBLIC.STUDENT (
         "Student_Mail" varchar(200) NOT NULL,
         "Name_Surname" varchar(200) NOT NULL,
