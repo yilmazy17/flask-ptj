@@ -248,19 +248,20 @@ def before_request():
     g.user = None
     g.types = None
     g.is_admin = None
-    if check == 0:
-        session['is_active'] = 'nonactive'
-        check = 1
-    if session['is_active'] == 'active':
-        user = session['user_name']
-        g.user = user
-        types = session['type']
-        is_admin = session['admin']
-        pk = session['user_pk']
-        g.pk = pk
-        g.types = types
-        g.is_admin = is_admin
-    g.is_active = session['is_active']
+    if 'is_active' in session:
+        if check == 0:
+            session['is_active'] = 'nonactive'
+            check = 1
+        if session['is_active'] == 'active':
+            user = session['user_name']
+            g.user = user
+            types = session['type']
+            is_admin = session['admin']
+            pk = session['user_pk']
+            g.pk = pk
+            g.types = types
+            g.is_admin = is_admin
+        g.is_active = session['is_active']
     
 
 def agency_page():
