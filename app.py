@@ -248,6 +248,7 @@ def before_request():
     g.user = None
     g.types = None
     g.is_admin = None
+    g.is_active = 'nonactive'
     if 'is_active' in session:
         if check == 0:
             session['is_active'] = 'nonactive'
