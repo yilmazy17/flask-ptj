@@ -43,7 +43,7 @@ INIT_STATEMENTS = [
         PRIMARY KEY("request_ıd"),
         FOREIGN KEY("Student_Mail") REFERENCES STUDENT("Student_Mail"),
         FOREIGN KEY("mersis_no") REFERENCES AGENCY("mersis_no"),
-        FOREIGN KEY("job_ıd") REFERENCES AGENCY("job_ıd"
+        FOREIGN KEY("job_ıd") REFERENCES AGENCY("job_ıd")
         );"""
 ]
 
