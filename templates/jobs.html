@@ -36,7 +36,7 @@
     
     {% for request in requests %}
 
-        {% if request[1] == g.pk and request[3] == job[0] %}
+        {% if request[1] == g.pk and request[3] == job[1] %}
         {% set ns.found = false %}       
         {% endif %}
     {% endfor %}
