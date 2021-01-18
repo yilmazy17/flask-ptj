@@ -1,31 +1,32 @@
 {% extends "layout.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-	<div class="messagetop">
+
+	<div class="messagetops">
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}	
 		{% for message in messages %}
-		<h3 class="message">{{message}}</h3>
+		<h3 class="messages">{{message}}</h3>
 		{% endfor %}
 	{% endif %}
 	{% endwith %}
 	{% if message %}
-	<h3 class="message">{{message}}</h3>
-{% endif %}
-</div>
-<div class="loginbox">
-    <img src="{{ url_for('static', filename='images/icon.png') }}" class="avatar">
-    <h1 class="loginh1">Öğrenci Girişi</h1>
-    <form method="post">
-        <p>Mail Adresi</p>
-        <input type="text" name="mail" placeholder="Kullanıcı Adını Giriniz" required>
-        <p>Şifre</p>
-        <input type="password" name="password" placeholder="Şifre giriniz" required>
-        <input type="submit" name="" value="Giriş">
-        <a href="{{ url_for('regis_page') }}">Kaydınız yoksa buraya tıklayarak kayıt olun...</a>
-        <a href="{{ url_for('bridge') }}">Şifremi Unuttum</a>
-    </form>
-</div>
+	<h3 class="messages">{{message}}</h3>
+    {% endif %}
+    </div>
+    <div class="loginbox">
+        <img src="{{ url_for('static', filename='images/icon.png') }}" class="avatar">
+        <h1 class="loginh1">Öğrenci Girişi</h1>
+        <form method="post">
+            <p>Mail Adresi</p>
+            <input type="text" name="mail" placeholder="Kullanıcı Adını Giriniz" required>
+            <p>Şifre</p>
+            <input type="password" name="password" placeholder="Şifre giriniz" required>
+            <input type="submit" name="" value="Giriş">
+            <a href="{{ url_for('regis_page') }}">Kaydınız yoksa buraya tıklayarak kayıt olun...</a>
+            <a href="{{ url_for('bridge') }}">Şifremi Unuttum</a>
+        </form>
+    </div>
 
 
 

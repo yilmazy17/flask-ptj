@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-	<div class="messagetop">
+    <div class="messagetops">
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}	
 		{% for message in messages %}
-		<h3 class="message">{{message}}</h3>
+		<h3 class="messages">{{message}}</h3>
 		{% endfor %}
 	{% endif %}
 	{% endwith %}
 	{% if message %}
-	<h3 class="message">{{message}}</h3>
-{% endif %}
-</div>
+	<h3 class="messages">{{message}}</h3>
+    {% endif %}
+    </div>
 <div class="loginbox">
     <img src="{{ url_for('static', filename='images/icon.png') }}" class="avatar">
     <h1 class="loginh1">Acente Girişi</h1>
