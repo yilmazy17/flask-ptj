@@ -53,9 +53,14 @@ def age_regis_page():
             if form_mersis == agency[0]:
                 return render_template("aceregis.html", message="Mersis Numarası zaten sistemde kayıtlı")
         form_office = request.form['office']
-        form_password = hasher.hash(request.form['Password'])
+        form_password = request.form['Password']
+        form_password1 = request.form['Password1']
         if len(form_password) < 8:
             return render_template("aceregis.html", message="Şifre 8 karakterden büyük olmalıdır")
+        if form_password != form_password1:
+            return render_template("aceregis.html", message="Girdiğiniz Şifreler Birbiriyle Uyuşmuyor")
+        else:
+            form_password = hasher.hash(request.form['Password'])
         cur.execute("""insert into AGENCY ("mersis_no","name","office_location","password")values(%s,%s,%s,%s)""",(form_mersis,form_compname,form_office,form_password))
         con.commit()
         flash('Kayıt Başarılı')
@@ -133,9 +138,14 @@ def regis_page():
         for student in students:
             if form_mail == student[0]:
                 return render_template("register.html", message="Mail adresi zaten mevcut")
-        form_password = hasher.hash(request.form["Password"])
+        form_password = request.form["Password"]
+        form_password1 = request.form["Password1"]
         if len(form_password) < 8:
             return render_template("register.html", message="Şifreniz 8 karakterden küçük olmalıdır")
+        if form_password != form_password1:
+            return render_template("register.html", message="Girdiğiniz Şifreler Birbbiriyle Uyuşmuyor")
+        else:
+            form_password = hasher.hash(request.form["Password"])
         form_age = request.form["age"]
         form_school = request.form["school"]
         langlist = []
