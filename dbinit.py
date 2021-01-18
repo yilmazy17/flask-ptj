@@ -64,7 +64,7 @@ def initialize(url):
 
 
 if __name__ == "__main__":
-    url = "postgres://kvwrgkebshegcf:aa87eb5072319ace108142f5e23255e66768ea1e77e76db8fbd9480de4fcf13a@ec2-34-202-5-87.compute-1.amazonaws.com:5432/d41ek2217p7u99"
+    url = "postgres://orjlqehaakykzl:4cfd156839b934eb3808c413c463693331ebb2ec300e4633ab00ab059353dad6@ec2-3-231-241-17.compute-1.amazonaws.com:5432/dbeu3rpdsa47s4"
     if url is None:
         print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
         sys.exit(1)
