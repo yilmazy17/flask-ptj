@@ -6,7 +6,7 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
     """CREATE SCHEMA IF NOT EXISTS PUBLIC;""",
-    """DELETE TABLE IF EXISTS PUBLIC.JOB;""",
+    """DROP TABLE IF EXISTS PUBLIC.JOB;""",
     """CREATE TABLE IF NOT EXISTS PUBLIC.STUDENT (
         "Student_Mail" varchar(200) NOT NULL,
         "Name_Surname" varchar(200) NOT NULL,
