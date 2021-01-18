@@ -353,13 +353,11 @@ def my_jobs_rq_page():
     reqjob1 = request.args.get('reqjob')
     reqjob = int(reqjob1)
     cur = con.cursor()
-    cur.execute("""select * from JOB_REQUEST """)
+    cur.execute("""select * from JOB_REQUEST NATURAL JOIN STUDENT """)
     myrequests = cur.fetchall()
-    cur.execute("""select * from STUDENT """)
-    students = cur.fetchall()
     cur.execute("""select * from LAN_TABLE """)
     languages = cur.fetchall()
-    return render_template("myjobrequest.html", myrequests=myrequests, reqjob=reqjob, students=students, languages=languages)
+    return render_template("myjobrequest.html", myrequests=myrequests, reqjob=reqjob, languages=languages)
 
 def aprove_req():
     apreq = request.args.get('apreq')
@@ -463,14 +461,11 @@ def delete_job():
 
 def jobs_page():
     cur = con.cursor()
-    cur.execute("""select * from JOB """)
+    cur.execute("""select * from JOB NATURAL JOIN AGENCY """)
     jobs = cur.fetchall()
-    cur = con.cursor()
-    cur.execute("""select * from AGENCY """)
-    agencies = cur.fetchall()
     cur.execute("""select * from JOB_REQUEST """)
     requests = cur.fetchall()
-    return render_template("jobs.html", jobs = jobs, agencies=agencies, requests=requests)
+    return render_template("jobs.html", jobs = jobs, requests=requests)
 
 def delete_stu():
     stumail = request.args.get('stumail')

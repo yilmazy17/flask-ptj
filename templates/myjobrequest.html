@@ -32,25 +32,22 @@
     <tr>
     {% if request[2] == g.pk and request[3] == reqjob %}
     
-    {% for student in students %}
-        {% if student[0] == request[1] %}
-            <td>	{{ student[0] }} </td>
-            <td>	{{ student[1]}}</td>
-            <td>	{{ student[3]}}</td>
-            <td>	{{student[4]}}</td>
-            <td>{% for language in languages %}{% if language[1] == student[0] %}{{language[2]}} {% endif %}{% endfor %}</td>
+    
+            <td>	{{ request[0] }} </td>
+            <td>	{{ request[5]}}</td>
+            <td>	{{ request[7]}}</td>
+            <td>	{{request[8]}}</td>
+            <td>{% for language in languages %}{% if language[1] == request[0] %}{{language[2]}} {% endif %}{% endfor %}</td>
             <td>
                 {% if request[4] != 'Onaylandı' %}
-                <a href="{{ url_for('aprove_req', apreq=request[0]) }}"> Onayla</a>
+                <a href="{{ url_for('aprove_req', apreq=request[1]) }}"> Onayla</a>
                 <br>
                 {% endif %}
                 {% if request[4] != 'Reddedildi' %}
-                <a href="{{ url_for('deny_req', apreq=request[0]) }}"> Reddet</a>
+                <a href="{{ url_for('deny_req', apreq=request[1]) }}"> Reddet</a>
                 {% endif %}
             </td>
-        {% endif %}
 
-    {% endfor %}
     <td>{{request[4]}}</td>
     
     {% endif %}

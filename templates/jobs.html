@@ -42,21 +42,17 @@
     {% endfor %}
     {% if ns.found %}
     <tr>
-        {% for agency in agencies %}
-        {% if agency[0] == job[5] %}
-        <td>	{{agency[1]}}</td>
-        {% endif %}
-        {% endfor %}
-        <td>	{{ job[1] }} </td>
-        <td>	{{ job[2]}}</td>
+        <td>	{{job[9]}}</td>
+        <td>	{{ job[2] }} </td>
         <td>	{{ job[3]}}</td>
         <td>	{{ job[4]}}</td>
+        <td>	{{ job[5]}}</td>
         <td>	{{ job[6]}}</td>
         <td>	{{ job[7]}}</td>
         <td>	{{ job[8]}}</td>    
-        {% if job[3] > 0 %}
+        {% if job[4] > 0 %}
         {% if g.types == 'Student' %}
-        <td><a href="{{ url_for('.request_job', reqjob_ıd=job[0], reqjob_mer=job[5]) }}">İşe istek gönder</a></td>
+        <td><a href="{{ url_for('.request_job', reqjob_ıd=job[1], reqjob_mer=job[0]) }}">İşe istek gönder</a></td>
         {% endif %}
         {% endif %}
     </tr>
