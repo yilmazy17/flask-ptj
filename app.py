@@ -195,7 +195,8 @@ def reset_code_page():
             if student[0] == form_mail:
                 x = 1
         if x == 0:
-            return render_template("resetpass.html", message="Girdiğiniz Mail Adresi Sistemde Kayıtlı Değil")
+            flash('Girdiğiniz Mail Adresi Sistemde Kayıtlı Değil')
+            return redirect(url_for("bridge"))
         else:
             randomlist = []
             for i in range(0,5):
@@ -221,7 +222,8 @@ def reset_pass_page():
         stringcode = request.args.get('stringcode')
         code = request.form['code']
         if code != stringcode:
-            return render_template("resetpass.html", message = "Kodu Yanlış Girdiniz Lütfen Tekrar Deneyiniz")
+            flash('Kodu Yanlış Girdiniz Lütfen Tekrar Deneyiniz')
+            return redirect(url_for("bridge"))
         else:
             return render_template("resetpass1.html", form_mail=form_mail, code=code, stringcode=stringcode)
 
