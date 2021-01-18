@@ -421,8 +421,8 @@ select{
 .inner_footer{
 	display: block;
 	margin: 0 auto;
-	width: 500px;
-	height: 100%;
+	width: 1100px;
+	height: 50%;
 }
 
 .inner_footer logo_container{

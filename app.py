@@ -112,7 +112,8 @@ def code_page():
         code = request.form['code']
         
         if code != stringcode:
-            return render_template("register.html", message="Onay Kodunu Yanlış Girdiniz Lütfen Tekrar Deneyiniz")
+            flash('Onay Kodunu Yanlış Girdiniz Lütfen Tekrar Deneyiniz')
+            return redirect(url_for("regis_page")) 
         else:
             cur.execute("""insert into STUDENT ("Student_Mail","Name_Surname","Password","University","Age")values(%s,%s,%s,%s,%s)""",(form_mail,form_namesurn,form_password,form_school,form_age))
             con.commit()
@@ -120,7 +121,7 @@ def code_page():
                 cur.execute("""insert into LAN_TABLE ("Student_Mail","Ekstra_Language")values(%s,%s)""",(form_mail,lang))
                 con.commit()
             msg = Message('PTJ Ailesine Hoşgeldin', recipients=[form_mail])
-            msg.body = 'Merhaba, PTJ Ailesi olarak seni aramızda görmekten Mutluluk Duyuyoruz, Umarım websitemizdeki deneyimden Memnun kalırsın.'
+            msg.body = 'Merhaba, PTJ Ailesi olarak seni aramızda görmekten mutluluk duyuyoruz, Umarım websitemizdeki deneyimden memnun kalırsın.'
             mail.send(msg)
             flash('Kaydınız Alınmıştır')
             return redirect(url_for("regis_page"))      
