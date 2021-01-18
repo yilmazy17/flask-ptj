@@ -499,7 +499,7 @@ def students_page():
     languages = cur.fetchall()
     cur.execute("""SELECT count(*) FROM STUDENT """)
     number = cur.fetchall()
-    return render_template("students.html", students = students, languages=languages, number=(number[0][0]-1))
+    return render_template("students.html", students = students, languages=languages, number=number[0][0]-1)
 
 
 app.add_url_rule("/", view_func=home_page)
