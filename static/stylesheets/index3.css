@@ -409,6 +409,42 @@ select{
     background-image: url("/static/images/back.jpg");
 }
 
+.footer{
+	width: 100vw;
+	display: block;
+	overflow: hidden;
+	padding: 70px 0;
+	box-sizing: border-box;
+	background-color: rgb(0,0,0,0.5)
+}
+
+.inner_footer{
+	display: block;
+	margin: 0 auto;
+	width: 1100px;
+	height: 100%;
+}
+
+.inner_footer logo_container{
+	width: 35%;
+	float: left;
+	height: 100%;
+	display: block;
+	
+}
+
+.inner_footer logo_container img{
+	width: 65px;
+	height: auto;
+}
+
+.inner_footer .footer_third{
+	width: calc(21.666666667% - 20px)
+	margin-right: 10px;
+	float: left;
+	height: 100%;
+}
+
 .loginboxs{
     width: 250px;
     height: 470px;

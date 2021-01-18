@@ -143,7 +143,7 @@ def regis_page():
         if len(form_password) < 8:
             return render_template("register.html", message="Şifreniz 8 karakterden küçük olmalıdır")
         if form_password != form_password1:
-            return render_template("register.html", message="Girdiğiniz Şifreler Birbbiriyle Uyuşmuyor")
+            return render_template("register.html", message="Girdiğiniz Şifreler Birbiriyle Uyuşmuyor")
         else:
             form_password = hasher.hash(request.form["Password"])
         form_age = request.form["age"]
