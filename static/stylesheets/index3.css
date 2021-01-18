@@ -439,10 +439,23 @@ select{
 }
 
 .inner_footer .footer_third{
-	width: calc(21.666666667% - 20px)
+	width: calc(21.666666667% - 20px);
 	margin-right: 10px;
 	float: left;
 	height: 100%;
+}
+
+.inner_footer .footer_third{
+	margin-right: 0;
+}
+
+.inner_footer .footer_third h1{
+	font-family: 'arial';
+	font-size: 22px;
+	color: white;
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 .loginboxs{
