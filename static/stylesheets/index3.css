@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     border: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 body{
     background-image: url("/static/images/back3.png");
@@ -305,6 +305,11 @@ form{
     
 }
 
+.mainpage{
+    margin-left: 40%;
+    margin-right: 50%;
+}
+
 
 .langs{
     width: 100%;
@@ -336,6 +341,21 @@ form{
   display: block;
 }
 
+.giris{
+    top: 20%;
+    left: 15%;
+    position: absolute;
+    display: inline;
+    width: 300px;
+}
+
+.giriss{
+    top: 68%;
+    left: 15%;
+    position: absolute;
+    display: inline;
+    width: 700px;
+}
 
 .headq{
     position: relative;
@@ -382,6 +402,21 @@ select{
     top: 60%;
     left: 50%;
     position: relative;
+    border-radius: 7px;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    background-image: url("/static/images/back.jpg");
+}
+
+.loginboxs{
+    width: 250px;
+    height: 470px;
+    border: 3px solid black;
+    color: #fff;
+    top: 50%;
+    left: 75%;
+    position: absolute;
     border-radius: 7px;
     transform: translate(-50%,-50%);
     box-sizing: border-box;
