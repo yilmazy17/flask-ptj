@@ -81,10 +81,10 @@ def job_post_page():
         if int(year) < int(ty):
             return render_template("jobpost.html", message="Girilen Tarih Değeri Günümüzden Küçük Olmamalıdır")
         month = form_JobDate[5:7]
-        if int(month) < int(tm):
+        if int(month) < int(tm) and int(year) == int(ty):
             return render_template("jobpost.html", message="Girilen Tarih Değeri Günümüzden Küçük Olmamalıdır")
         day = form_JobDate[8:10]
-        if int(day) < int(td):
+        if int(day) < int(td) and int(month) == int(tm) and int(year) == int(tm):
             return render_template("jobpost.html", message="Girilen Tarih Değeri Günümüzden Küçük Olmamalıdır")
         time = form_JobDate[11:len(form_JobDate)]
         form_JobDate2 = 'İş Tarihi: ' + year + '-' + month + '-' + day + ' İş Başlangıç Saati: ' + time
