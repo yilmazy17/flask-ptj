@@ -282,7 +282,9 @@ def agency_page():
     cur = con.cursor()
     cur.execute("""select * from AGENCY """)
     agencies = cur.fetchall()
-    return render_template("agencies.html", agencies=agencies)
+    cur.execute("""SELECT count(*) FROM AGENCY """)
+    number = cur.fetchall()
+    return render_template("agencies.html", agencies=agencies, number=number[0][0])
 
     
 
@@ -495,7 +497,9 @@ def students_page():
     students = cur.fetchall()
     cur.execute("""select * from LAN_TABLE """)
     languages = cur.fetchall()
-    return render_template("students.html", students = students, languages=languages)
+    cur.execute("""SELECT count(*) FROM STUDENT """)
+    number = cur.fetchall()
+    return render_template("students.html", students = students, languages=languages, number=number[0][0])
 
 
 app.add_url_rule("/", view_func=home_page)
