@@ -218,8 +218,6 @@ def reset_pass_page():
     else:
         form_mail = request.args.get('form_mail')
         stringcode = request.args.get('stringcode')
-        form_mail =  request.args.get('form_mail')
-        stringcode = request.args.get('stringcode')
         code = request.form['code']
         if code != stringcode:
             flash('Kodu Yanlış Girdiniz Lütfen Tekrar Deneyiniz')
